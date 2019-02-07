@@ -1,0 +1,4 @@
+<%= form_for(@deposit) do |t| %>
+  <%= t.number_field :deposit, :step => 10,:value => 0 %>
+  <%= t.submit "Deposit Funds" %>
+  <% end %>

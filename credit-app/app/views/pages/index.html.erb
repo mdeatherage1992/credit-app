@@ -1,0 +1,54 @@
+<% content_for :top_content do %>
+  <div class="jumbotron">
+    <div class="container">
+      <% if !current_user %>
+      <h1>Welcome!</h1>
+      <p>Register to get started.</p>
+      <p>
+        <%= link_to 'Register', new_user_registration_path, class: 'btn btn-primary btn-lg' %>
+      </p>
+
+      <% else if !current_user.account %>
+      <h1> Welcome <%= current_user.name %>, how are you? </h1>
+      <h3> What would you like to do? </h3>
+      <h5>Create an Account to get a Loan</h5>
+      <%= link_to "Create a Loan Account", new_user_account_path(@user) %>
+
+      <% else  %>
+      <h1> Welcome <%= current_user.name %>, how are you? </h1>
+
+      <h2>Summary</h2>
+
+    <h4><%= current_user.name %>, the balance in the line of credit you opened <%= time_ago_in_words(@last) %> ago is now $<%=@account.balance.to_i %> </h4>
+      <h2> Your Credit Line Info </h2>
+      <h4 id="foxtrot">$<%= @account.balance %> / $20,000 </h4>
+      <ul>
+      Daily Interest Rate:<li>  $<%= @daily.round(3) %> </li>
+      Accrued Interest to be assessed Monthly: <li>$<%= @daily.round(3) * 30  %></li>
+      Hourly Rate:<li> $<%= @compounder.round(3) %></li>
+      </ul>
+      <h6>Note: Credit Limit $20,000.</h6>
+      <div class="new-loan">
+      <h3>I would like to update my loan product:</h3>
+      <h6> Deposit:</h6>
+
+      <%= render "deposit" %>
+
+      <h6>Withdraw</h6>
+
+      <%= render "withdraw" %>
+
+      </div>
+      <% end %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+
+
+
+<div>
+<h1>Activity Feed</h1>
+<%= render "feed" %>
+</div>

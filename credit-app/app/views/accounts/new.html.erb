@@ -1,0 +1,28 @@
+<% require 'pry' %>
+<h2>Create your Loan Account to get Funds!</h2>
+
+  <%= form_for [@user, @account] do |f| %>
+    <% if @account.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@account.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+        <ul>
+        <% @account.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="field">
+    <h3> Account Name </h3>
+      <%= f.text_field :name %>
+    </div>
+    <div class="field">
+      <h3> How much would you like to Withdraw? </h3>
+      <h4> Note: an APR charge of 35% will begin immediately following withdrawal </h4>
+      <%= f.number_field :balance, :step => 50 %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>

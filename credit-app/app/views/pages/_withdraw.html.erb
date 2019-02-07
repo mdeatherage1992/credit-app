@@ -1,0 +1,4 @@
+<%= form_for(@withdraw) do |t| %>
+  <%= t.number_field :withdraw, :step => 10,:value => 0 %>
+  <%= t.submit "Withdraw Funds" %>
+  <% end %>

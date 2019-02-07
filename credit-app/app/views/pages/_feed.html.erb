@@ -1,0 +1,23 @@
+<% if @activities %>
+<% @activities.each do |tt| %>
+
+<% if tt[:deposit]%>
+<h3>Deposit</h3>
+<div id="deposit">
+  <ul class="list-group">
+  <li class="list-group-item">Date:<%= tt[:created_at] %></li>
+  <li class="list-group-item">$<%= tt[:deposit] %></li>
+  </ul
+</div>
+<% end %>
+  <% if tt[:withdraw] %>
+  <h3>Withdrawal</h3>
+  <div id="withdraw">
+  <ul class="list-group">
+  <li class="list-group-item">Date:<%= tt[:created_at] %></li>
+  <li class="list-group-item"> $<%= tt[:withdraw] %></li>
+  </ul>
+</div>
+  <%end %>
+  <% end %>
+<% end %>
